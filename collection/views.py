@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
+import random
+from collection.models import Artwork
 
 def register(request):
     if request.method == 'POST':
@@ -22,4 +24,10 @@ def register(request):
 
 
 def index(request):
-    return render(request, 'collection/index.html', {'data': 'Not'})
+    count = Artwork.objects.count()
+    random_artwork = None
+    if count > 0:
+        random_index = random.randint(0, count - 1)
+        random_artwork = Artwork.objects.all()[random_index]
+
+    return render(request, 'collection/index.html', {'artwork': random_artwork})
