@@ -23,11 +23,17 @@ def register(request):
     return render(request, 'registration/registration_form.html', {'form': f})
 
 
-def index(request):
-    count = Artwork.objects.count()
-    random_artwork = None
-    if count > 0:
-        random_index = random.randint(0, count - 1)
-        random_artwork = Artwork.objects.all()[random_index]
+def artwork(request, artwork_id):
 
-    return render(request, 'collection/index.html', {'artwork': random_artwork})
+    artwork = Artwork.objects.get(pk=artwork_id)
+
+    return render(request, 'collection/artwork.html', {'artwork': artwork})
+
+
+def index(request):
+    artworks = list(Artwork.objects.all())
+    random_works = []
+    if artworks:
+        random_works = random.sample(artworks, 12)
+
+    return render(request, 'collection/index.html', {'artworks': random_works})
