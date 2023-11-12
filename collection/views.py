@@ -113,3 +113,7 @@ def ft_artworks(value):
         .filter(search=query)
         .order_by("-rank")
     )
+
+
+def artwork_add(value):
+    return

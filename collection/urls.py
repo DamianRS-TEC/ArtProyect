@@ -10,5 +10,6 @@ urlpatterns = [
     path("collection_list/", views.collection_list, name="collection_list"),
     path("collection/add", views.collection_add, name="collection_add"),
     path("accounts/profile/", views.index, name="index"),
-    path("accounts/register/", views.register, name="register")
+    path("accounts/register/", views.register, name="register"),
+    path("artwork/add", views.artwork_add, name="artwork_add"),
 ]
