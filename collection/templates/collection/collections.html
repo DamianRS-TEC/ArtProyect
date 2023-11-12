@@ -45,9 +45,20 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const addButton = document.getElementById("add-collection-button-container");
+  const addCollectionContent = document.getElementById("add-collection-content");
 
   addButton.addEventListener("click", function () {
     addButton.style.display = "none";
+  });
+
+  addCollectionContent.addEventListener("hx-success", function () {
+    addButton.style.display = "block";
+    addCollectionContent.style.display = "none";
+  });
+
+  addCollectionContent.addEventListener("hx-error", function () {
+    addButton.style.display = "block";
+    addCollectionContent.style.display = "none";
   });
 });
 </script>
