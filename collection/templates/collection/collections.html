@@ -18,7 +18,7 @@
                     >Agrega una colección</button>
       </div>
     </div>
-    <div id="add-collection-content" class="mt-8 flow-root" style="display: none;">
+    <div id="add-collection-content" class="mt-8 flow-root">
       <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
           <table class="min-w-full divide-y divide-gray-300">
@@ -45,20 +45,14 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const addButton = document.getElementById("add-collection-button-container");
-  const addCollectionContent = document.getElementById("add-collection-content");
 
   addButton.addEventListener("click", function () {
     addButton.style.display = "none";
   });
 
-  addCollectionContent.addEventListener("hx-success", function () {
+  // Evento para mostrar nuevamente el botón después de enviar el formulario
+  document.body.addEventListener("hx-success", function () {
     addButton.style.display = "block";
-    addCollectionContent.style.display = "none";
-  });
-
-  addCollectionContent.addEventListener("hx-error", function () {
-    addButton.style.display = "block";
-    addCollectionContent.style.display = "none";
   });
 });
 </script>
