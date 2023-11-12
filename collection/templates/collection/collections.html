@@ -13,7 +13,7 @@
                     shadow-sm hover:bg-indigo-500 focus-visible:outline 
                     focus-visible:outline-2 focus-visible:outline-offset-2 
                     focus-visible:outline-indigo-600"
-                   hx-get="/collection/add" hx-target="this" hx-swap="outerHTML" hx-trigger="this.disabled=true"
+                   hx-get="/collection/add" hx-target="#add-collection-button" hx-swap="outerHTML" hx-trigger="load"
                 >Agrega una collección</button>
     </div>
   </div>
@@ -40,4 +40,13 @@
   </div>
 </div>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const addButton = document.getElementById("add-collection-button");
+    addButton.addEventListener("click", function () {
+      addButton.style.display = "none";
+    });
+  });
+</script>
+
 {% endblock content %}
