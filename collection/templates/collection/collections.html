@@ -18,7 +18,7 @@
                     >Agrega una colección</button>
       </div>
     </div>
-    <div id="add-collection-content" class="mt-8 flow-root">
+    <div id="add-collection-content" class="mt-8 flow-root" style="display: none;">
       <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
           <table class="min-w-full divide-y divide-gray-300">
@@ -46,29 +46,21 @@
 document.addEventListener("DOMContentLoaded", function () {
   const addButtonContainer = document.getElementById("add-collection-button-container");
   const addCollectionContent = document.getElementById("add-collection-content");
-  const addButton = document.querySelector("#add-collection-content button");
 
-  // Ocultar el contenido del formulario al cargar la página
-  addCollectionContent.style.display = "none";
-
-  addButton.addEventListener("click", function () {
+  addButtonContainer.addEventListener("click", function () {
     // Mostrar el contenido del formulario al hacer clic en el botón
     addCollectionContent.style.display = "block";
     // Ocultar el contenedor del botón
     addButtonContainer.style.display = "none";
-    // Cambiar el texto del botón a una cadena vacía
-    addButton.textContent = "";
   });
 
-  const cancelButton = addCollectionContent.querySelector('button[data-hx-target="#add-collection-content"]');
+  const cancelButton = addCollectionContent.querySelector('button[type="button"]');
 
   cancelButton.addEventListener("click", function () {
     // Ocultar el contenido del formulario al hacer clic en "Cancelar"
     addCollectionContent.style.display = "none";
     // Mostrar el contenedor del botón
     addButtonContainer.style.display = "block";
-    // Restaurar el texto original del botón
-    addButton.textContent = "Agrega una colección";
   });
 });
 </script>
