@@ -44,12 +44,10 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const addButtonContainer = document.getElementById("add-collection-button-container");
-  const addCollectionContent = document.getElementById("add-collection-content");
+  const addButton = document.getElementById("add-collection-button-container");
 
-  addButtonContainer.addEventListener("click", function () {
-    // Mostrar el contenido del formulario al hacer clic en el botón
-    addCollectionContent.style.display = "block"; 
+  addButton.addEventListener("click", function () {
+    addButton.style.display = "none";
   });
 });
 </script>
