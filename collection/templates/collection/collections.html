@@ -45,10 +45,19 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const addButtonContainer = document.getElementById("add-collection-button-container");
+  const addCollectionContent = document.getElementById("add-collection-content");
   const addButton = document.querySelector("#add-collection-content button");
 
+  // Ocultar el contenido del formulario al cargar la página
+  addCollectionContent.style.display = "none";
+
   addButton.addEventListener("click", function () {
+    // Mostrar el contenido del formulario al hacer clic en el botón
+    addCollectionContent.style.display = "block";
+    // Ocultar el contenedor del botón
     addButtonContainer.style.display = "none";
+    // Cambiar el texto del botón a una cadena vacía
+    addButton.textContent = "";
   });
 });
 </script>
