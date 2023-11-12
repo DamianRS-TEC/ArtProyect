@@ -59,6 +59,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // Cambiar el texto del botón a una cadena vacía
     addButton.textContent = "";
   });
+
+  const cancelButton = addCollectionContent.querySelector('button[data-hx-target="#add-collection-content"]');
+
+  cancelButton.addEventListener("click", function () {
+    // Ocultar el contenido del formulario al hacer clic en "Cancelar"
+    addCollectionContent.style.display = "none";
+    // Mostrar el contenedor del botón
+    addButtonContainer.style.display = "block";
+    // Restaurar el texto original del botón
+    addButton.textContent = "Agrega una colección";
+  });
 });
 </script>
 
