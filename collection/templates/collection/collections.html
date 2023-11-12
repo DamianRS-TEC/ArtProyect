@@ -14,7 +14,7 @@
                       focus-visible:outline-2 focus-visible:outline-offset-2 
                       focus-visible:outline-indigo-600"
                     hx-get="/collection/add" hx-target="#add-collection-content" hx-swap="outerHTML"
-                    hx-trigger="click"
+                    hx-trigger="load"
                     >Agrega una colección</button>
       </div>
     </div>
@@ -49,19 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   addButtonContainer.addEventListener("click", function () {
     // Mostrar el contenido del formulario al hacer clic en el botón
-    addCollectionContent.style.display = "block";
-  
-  });
-
-  const cancelButton = addCollectionContent.querySelector('button[type="button"]');
-
-  cancelButton.addEventListener("click", function () {
-    // Ocultar el contenido del formulario al hacer clic en "Cancelar"
-    addCollectionContent.style.display = "none";
-    // Mostrar el contenedor del botón
-    addButtonContainer.style.display = "block";
-  });
-});
+    addCollectionContent.style.display = "block"; });
 </script>
 
 {% endblock content %}
