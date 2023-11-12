@@ -44,12 +44,14 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const addButtonContainer = document.getElementById("add-collection-button-container");
   const addCollectionContent = document.getElementById("add-collection-content");
 
-  addButtonContainer.addEventListener("click", function () {
-    // Mostrar el contenido del formulario al hacer clic en el botón
-    addCollectionContent.style.display = "block"; 
+  document.body.addEventListener("hx:afterSwap", function (event) {
+    // Verificar si el nuevo contenido es el formulario de colección
+    if (event.target.id === "add-collection-content") {
+      // Mostrar el contenido del formulario
+      addCollectionContent.style.display = "block";
+    }
   });
 });
 </script>
