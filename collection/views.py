@@ -39,6 +39,7 @@ def collections(request):
 
 def collection_list(request):
     collections = Collection.objects.filter(owner=request.user)
+    print("a)")
     return render(request, 'collection/collection_list.html',
                   {'collections': collections})
 
