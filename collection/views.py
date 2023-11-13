@@ -130,3 +130,11 @@ def artwork_add_collection(value, collection, artwork_id):
         if c.name == collection:
             c.artworks.add(artwork_id)
     return HttpResponse(status=204)
+
+def show_collection(value, name):
+    collection = Collection.objects.filter(owner=value.user)
+    for c in collection:
+        if c.name == name:
+            artwork = c.artworks
+            print(artwork)
+    return render(value, 'collection/collection_show.html', {'name':name, "artwork": artwork})
