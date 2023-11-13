@@ -7,6 +7,8 @@ from collection.models import Artwork, Collection
 from django.contrib.postgres import search
 from django.core.paginator import Paginator
 from .forms import CollectionForm
+from django.template.loader import render_to_string
+
 
 def register(request):
     if request.method == 'POST':
@@ -52,16 +54,18 @@ def collection_add(request):
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
             collection = Collection(
-                    name=name,
-                    description=description,
-                    owner=request.user)
+                name=name,
+                description=description,
+                owner=request.user
+            )
             collection.save()
-            return HttpResponse(status=204,
-                                headers={'HX-Trigger': 'listChanged'})
 
-    return render(request,
-                  'collection/collection_form.html',
-                  {'form': form})
+            # Devolver el HTML actualizado de la lista de colecciones
+            collections = Collection.objects.filter(owner=request.user)
+            html = render_to_string('collection/collection_list.html', {'collections': collections})
+            return HttpResponse(html, status=200)
+
+    return render(request, 'collection/collection_form.html', {'form': form})
 
 
 def index(request):

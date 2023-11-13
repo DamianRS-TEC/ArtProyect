@@ -32,17 +32,13 @@
               </tr>
             </thead>
             <tbody  hx-trigger="listChanged from:body" 
-                    hx-get="collection_list/" hx-target="this" class="divide-y divide-gray-200">
+                    hx-get="{% url 'collection_list' %}" hx-target="this" class="divide-y divide-gray-200">
               {% include "collection/collection_list.html" %}              
             </tbody>
           </table>
         </div>
       </div>
     </div>
-
-    <!-- Mostrar el formulario de colección -->
-    {{ form.as_p }}
-    <button type="submit">Guardar colección</button>
   </div>
 </div>
 
@@ -59,5 +55,24 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const addCollectionContent = document.getElementById("add-collection-content");
+  const collectionsTable = document.getElementById("collections-table");
 
+  document.body.addEventListener("hx:afterSwap", function (event) {
+    // Verificar si el nuevo contenido es el formulario de colección
+    if (event.target.id === "add-collection-content") {
+      // Mostrar el contenido del formulario
+      addCollectionContent.style.display = "block";
+    }
+
+    // Verificar si el nuevo contenido es la lista de colecciones
+    if (event.target.id === "collections-table") {
+      // Ocultar el contenido del formulario
+      addCollectionContent.style.display = "none";
+    }
+  });
+});
+</script>
 {% endblock content %}
