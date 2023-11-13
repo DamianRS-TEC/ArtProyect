@@ -27,12 +27,23 @@
             <p class="mt-3 pl-8 text-white-600  font-thin"> Date: {{artwork.date}} </p>
             <p class="mt-2 pl-8 text-white-600  font-thin"> Style: {{artwork.style.name}} </p>
             <p class="mt-2 pl-8 text-white-600  font-thin"> Period: {{artwork.period.name}} </p>
-            <p class="mt-3 pl-8 text-white-600  font-thin"> Genre: {{artwork.genre.name}} </p>            
-            <button id="add-painting-to-collection" type="button" class="mt-5 pl-8 text-sky-600 hover:text-red-600">
-            Agregar a coleccion</button>
+            <p class="mt-3 pl-8 text-white-600  font-thin"> Genre: {{artwork.genre.name}} </p>
+            {% if user.is_authenticated %}
+              <button id="add-painting-to-collection"
+              type="button"
+              class="mt-5 pl-8 text-sky-600"
+              hx-get="add/{{artwork.id}}"
+              hx-trigger="click"
+              hx-swap="outerHTML">
+              Agregar a coleccion
+             </button>
+              {% block add %}
+              {% endblock add %}
+            {% endif %}
           </div>
       </div>
     </div>
 </div>
+
 
 {% endblock content %}

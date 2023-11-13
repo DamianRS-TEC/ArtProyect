@@ -115,5 +115,13 @@ def ft_artworks(value):
     )
 
 
-def artwork_add(value):
-    return
+def artwork_add(value, artwork_id):
+    collections = Collection.objects.filter(owner=value.user)    
+    return render(value, 'collection/artwork_add.html', {'collections': collections, "artwork": artwork_id})
+
+def artwork_add_collection(value, collection, artwork_id):
+    collections = Collection.objects.filter(owner=value.user)
+    for c in collections:
+        if c.name == collection:
+            c.artworks.add(artwork_id)
+    return HttpResponse(status=204)
