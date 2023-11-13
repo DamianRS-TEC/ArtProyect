@@ -31,10 +31,10 @@
                 </th>
               </tr>
             </thead>
-            <tbody  hx-trigger="listChanged from:body" 
-                    hx-get="{% url 'collection_list' %}" hx-target="this" class="divide-y divide-gray-200">
-              {% include "collection/collection_list.html" %}              
-            </tbody>
+            <tbody id="collections-table" hx-trigger="listChanged from:body"
+              hx-get="{% url 'collection_list' %}" hx-target="this" class="divide-y divide-gray-200">
+  {% include "collection/collection_list.html" %}
+</tbody>
           </table>
         </div>
       </div>
