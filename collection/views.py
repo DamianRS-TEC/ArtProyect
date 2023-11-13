@@ -73,6 +73,7 @@ def index(request):
     random_works = []
     if artworks:
         random_works = random.sample(artworks, 4)
+    print(random_works)
     return render(request, 'collection/index.html', {'artworks': random_works})
 
 
@@ -135,6 +136,13 @@ def show_collection(value, name):
     collection = Collection.objects.filter(owner=value.user)
     for c in collection:
         if c.name == name:
-            artwork = c.artworks
+            artworks = list(c.artworks.all())
             print(artwork)
-    return render(value, 'collection/collection_show.html', {'name':name, "artwork": artwork})
+    return render(value, 'collection/collection_show.html', {'name':name, "artworks": artworks})
+
+def collection_delete(value,name):
+    collection = Collection.objects.filter(owner=value.user)
+    for c in collection:
+        if c.name == name:
+            c.delete()
+    return HttpResponse(status=204, headers={'HX-Trigger': 'listChanged'})

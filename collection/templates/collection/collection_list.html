@@ -3,11 +3,18 @@
               <td class="whitespace-nowrap py-4 pl-4
                         pr-3 text-sm font-medium 
                         text-gray-900 sm:pl-0">
-                        <button type="button" hx-get="{{collection.name}}" hx-trigger="click" hx-swap="beforeend">
+                        <button type="button" hx-get="{{collection.name}}" hx-trigger="click" hx-swap="afterend">
                           {{collection.name}}
                         </button>
                         </td>
-              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{collection.description}}</td>
-              </td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  {{collection.description}}
+                  </td>
+                </td>
+                <td>
+                  <button type="button" hx-get="/collection/delete/{{collection.name}}" hx-trigger="click">
+                    Delete
+                  </button>
+                </td>
             </tr>
 {% endfor %}
